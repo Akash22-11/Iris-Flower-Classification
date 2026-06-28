@@ -46,20 +46,16 @@ df['species_name'] = df['species'].map({
     0: 'Iris-setosa', 1: 'Iris-versicolor', 2: 'Iris-virginica'
 })
 
-# Save dataset
+
 df.to_csv(os.path.join(DATA_DIR, 'iris.csv'), index=False)
 print(f"\n✔ Dataset loaded: {df.shape[0]} rows × {df.shape[1]} columns")
 print(f"  Classes : {df['species_name'].unique().tolist()}")
 print(f"  Balance : \n{df['species_name'].value_counts().to_string()}")
 
-# ──────────────────────────────────────────────
-# 2. EDA Plots
-# ──────────────────────────────────────────────
 FEATURES = iris.feature_names
 COLORS   = ['#4C72B0', '#55A868', '#C44E52']
 SPECIES  = ['Iris-setosa', 'Iris-versicolor', 'Iris-virginica']
 
-# 2a. Pairplot
 print("\n[EDA] Generating pairplot …")
 pair_df = df[FEATURES + ['species_name']].copy()
 pair_df.columns = ['Sepal Len', 'Sepal Wid', 'Petal Len', 'Petal Wid', 'Species']

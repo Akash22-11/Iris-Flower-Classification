@@ -76,10 +76,6 @@ The complete pipeline includes:
 │
 ├── 📁 src
 │   └── iris_classification.py
-│
-├── 📄 results_summary.txt
-├── requirements.txt
-└── README.md
 ```
 
 ---

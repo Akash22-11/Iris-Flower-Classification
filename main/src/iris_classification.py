@@ -139,7 +139,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 print(f"\n  Train: {X_train.shape[0]} | Test: {X_test.shape[0]}")
 
 
-# 5. Model Training & Evaluation
+# Model Training & Evaluation
 print("\n[Model Training — 8 algorithms]")
 
 models = {
@@ -181,9 +181,6 @@ for name, model in models.items():
 best_name = max(results, key=lambda n: results[n]['roc_auc'])
 best = results[best_name]
 print(f"\n★ Best Model: {best_name}  (ROC-AUC={best['roc_auc']:.4f})")
-
-
-# 6. Hyperparameter Tuning (Best Model)
 print(f"\n[Hyperparameter Tuning — {best_name}]")
 
 param_grids = {
@@ -211,6 +208,7 @@ param_grids = {
     },
 }
 
+
 tuned_model  = best['model']
 tuned_y_pred = best['y_pred']
 
@@ -230,6 +228,7 @@ else:
 
 
 # 7. Visualisations — Results
+
 print("\n[Plots — Results]")
 
 print("[Plot] Model comparison …")
@@ -368,9 +367,6 @@ plt.savefig(os.path.join(PLOTS_DIR, '08_learning_curve.png'), dpi=120, bbox_inch
 plt.close()
 print("  ✔ 08_learning_curve.png")
 
-# ──────────────────────────────────────────────
-# 8. Classification Report
-# ──────────────────────────────────────────────
 print("\n" + "=" * 60)
 print(f"CLASSIFICATION REPORT — {best_name}")
 print("=" * 60)
@@ -379,9 +375,6 @@ print(classification_report(
     target_names=['Iris-setosa', 'Iris-versicolor', 'Iris-virginica']
 ))
 
-# ──────────────────────────────────────────────
-# 9. Sample Predictions
-# ──────────────────────────────────────────────
 print("=" * 60)
 print("SAMPLE PREDICTIONS (10 test samples)")
 print("=" * 60)
@@ -392,15 +385,11 @@ sample_df['Actual']    = [species_map[y] for y in y_test[:10]]
 sample_df['Predicted'] = [species_map[y] for y in tuned_y_pred[:10]]
 sample_df['Correct']   = sample_df['Actual'] == sample_df['Predicted']
 
-# Show only original 4 features for readability
 display_cols = list(iris.feature_names) + ['Actual', 'Predicted', 'Correct']
 print(sample_df[display_cols].to_string(index=False))
 print(f"\nAccuracy on these 10 samples: "
       f"{sample_df['Correct'].sum()}/10")
 
-# ──────────────────────────────────────────────
-# 10. Save summary
-# ──────────────────────────────────────────────
 summary_lines = [
     "IRIS FLOWER CLASSIFICATION — RESULTS SUMMARY",
     "=" * 50,
@@ -417,8 +406,10 @@ for n in names:
         f"Acc={results[n]['test_acc']:.4f}  AUC={results[n]['roc_auc']:.4f}"
     )
 
+
 with open(os.path.join(BASE, 'results_summary.txt'), 'w') as f:
     f.write('\n'.join(summary_lines))
+
 
 print("\n✔ results_summary.txt saved")
 print("\n✔ All done! Check the /plots directory for visualisations.")

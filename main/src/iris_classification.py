@@ -17,7 +17,6 @@ from sklearn.metrics import (
     accuracy_score, classification_report, confusion_matrix, roc_auc_score
 )
 
-# Models
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
@@ -29,7 +28,6 @@ from sklearn.naive_bayes import GaussianNB
 
 warnings.filterwarnings('ignore')
 
-# Paths
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR  = os.path.join(BASE, 'data')
@@ -37,9 +35,6 @@ PLOTS_DIR = os.path.join(BASE, 'plots')
 os.makedirs(DATA_DIR, exist_ok=True)
 os.makedirs(PLOTS_DIR, exist_ok=True)
 
-# ──────────────────────────────────────────────
-# 1. Load Data
-# ──────────────────────────────────────────────
 print("=" * 60)
 print("IRIS FLOWER CLASSIFICATION — CodSoft Task 3")
 print("=" * 60)

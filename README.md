@@ -1,58 +1,70 @@
-# Iris-Flower-Classification
+<div align="center">
 
-# 🌸 Iris Flower Classification using Machine Learning
+# 🌸 Iris Flower Classification 🌸
 
-> Predicting Iris flower species using Machine Learning with feature engineering, model comparison, hyperparameter tuning, and insightful visualizations.
+### 🚀 Multi-Class Machine Learning Classification Project
 
-![Python](https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge&logo=python)
-![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-ML-orange?style=for-the-badge&logo=scikitlearn)
-![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458?style=for-the-badge&logo=pandas)
-![NumPy](https://img.shields.io/badge/NumPy-Scientific%20Computing-013243?style=for-the-badge&logo=numpy)
-![Matplotlib](https://img.shields.io/badge/Matplotlib-Visualization-blue?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+<img src="https://readme-typing-svg.herokuapp.com?font=Poppins&weight=700&size=26&pause=1000&color=00C896&center=true&vCenter=true&width=700&lines=Iris+Flower+Classification;Machine+Learning+Project;Feature+Engineering;Model+Comparison;Scikit-Learn+%7C+Python" />
 
----
+<br>
 
-## 📖 Overview
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Scikit Learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-11557c?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-success?style=for-the-badge)
 
-This project builds and evaluates multiple Machine Learning models to classify Iris flowers into one of three species:
+<img src="https://user-images.githubusercontent.com/74038190/212284126-77d3ff56-3fda-4b6f-91f4-9d5e6b5f9f7d.gif" width="100%">
 
-- 🌼 Setosa
-- 🌸 Versicolor
-- 🌺 Virginica
-
-Using the famous Iris dataset, the project includes:
-
-- 🌿 Feature Engineering
-- 🤖 Training 8 Machine Learning models
-- 🔍 Hyperparameter Tuning
-- 📊 Model Evaluation
-- 📈 Data Visualization
-- 🏆 Best Model Selection
+</div>
 
 ---
 
-## 📊 Dataset
+# 🌼 About the Project
 
-| Property | Details |
-|----------|---------|
-| **Source** | UCI Machine Learning Repository / Scikit-Learn |
-| **Samples** | 150 |
-| **Classes** | 3 |
-| **Distribution** | Balanced (50 samples each) |
-| **Features** | Sepal Length, Sepal Width, Petal Length, Petal Width |
+This project predicts the **species of an Iris flower** using supervised Machine Learning algorithms.
+
+The complete pipeline includes:
+
+✨ Exploratory Data Analysis
+
+✨ Feature Engineering
+
+✨ Model Training
+
+✨ Hyperparameter Tuning
+
+✨ Performance Comparison
+
+✨ Visualization
+
+✨ Best Model Selection
 
 ---
 
-## 📁 Project Structure
+# 🌺 Dataset
+
+| 📌 Property | Value |
+|------------|-------|
+| Dataset | Iris Dataset |
+| Source | UCI / Scikit-Learn |
+| Samples | **150** |
+| Classes | **3** |
+| Features | **4 Original + 7 Engineered** |
+| Distribution | Perfectly Balanced |
+
+---
+
+# 📂 Project Structure
 
 ```text
-IrisClassification/
+📦 IrisClassification
 │
-├── data/
+├── 📁 data
 │   └── iris.csv
 │
-├── plots/
+├── 📁 plots
 │   ├── 01_pairplot.png
 │   ├── 02_boxplots.png
 │   ├── 03_correlation.png
@@ -62,163 +74,173 @@ IrisClassification/
 │   ├── 07_decision_boundary.png
 │   └── 08_learning_curve.png
 │
-├── src/
+├── 📁 src
 │   └── iris_classification.py
 │
-├── results_summary.txt
+├── 📄 results_summary.txt
 ├── requirements.txt
 └── README.md
 ```
 
 ---
 
-# 🌿 Feature Engineering
+# ⚙️ Feature Engineering
 
-Seven additional features were created from the original dataset.
-
-| Feature | Formula |
-|---------|---------|
-| Petal Ratio | Petal Length / Petal Width |
-| Sepal Ratio | Sepal Length / Sepal Width |
-| Petal Area | Petal Length × Petal Width |
-| Sepal Area | Sepal Length × Sepal Width |
-| Length Difference | Sepal Length − Petal Length |
-| Width Difference | Sepal Width − Petal Width |
-| Petal/Sepal Area Ratio | Petal Area / Sepal Area |
+| 🌿 Feature | Description |
+|------------|------------|
+| Petal Ratio | Petal Length / Width |
+| Sepal Ratio | Sepal Length / Width |
+| Petal Area | Length × Width |
+| Sepal Area | Length × Width |
+| Length Difference | Sepal − Petal |
+| Width Difference | Sepal − Petal |
+| Area Ratio | Petal Area / Sepal Area |
 
 ---
 
 # 🤖 Machine Learning Models
 
-The following algorithms were trained and compared.
-
-| Model | CV Accuracy | Test Accuracy | ROC-AUC |
-|------|:-----------:|:-------------:|:------:|
-| Logistic Regression | 96.67% | **100%** | **1.0000** |
-| K-Nearest Neighbors | 96.67% | **100%** | **1.0000** |
-| Support Vector Machine | 97.50% | **100%** | **1.0000** |
-| Decision Tree | 94.17% | 86.67% | 0.9000 |
-| Random Forest | 96.67% | 96.67% | 0.9933 |
-| Extra Trees | 97.50% | 96.67% | 0.9967 |
-| Gradient Boosting | 95.00% | 83.33% | 0.9800 |
-| Naive Bayes | 96.67% | 96.67% | 1.0000 |
+| Model | Accuracy | ROC-AUC |
+|--------|----------|----------|
+| Logistic Regression | ⭐⭐⭐⭐⭐ | 1.000 |
+| SVM | ⭐⭐⭐⭐⭐ | 1.000 |
+| KNN | ⭐⭐⭐⭐⭐ | 1.000 |
+| Random Forest | ⭐⭐⭐⭐☆ | 0.993 |
+| Extra Trees | ⭐⭐⭐⭐☆ | 0.996 |
+| Decision Tree | ⭐⭐⭐☆☆ | 0.900 |
+| Gradient Boosting | ⭐⭐☆☆☆ | 0.980 |
+| Naive Bayes | ⭐⭐⭐⭐☆ | 1.000 |
 
 ---
 
 # 🏆 Best Model
 
-**Logistic Regression**
+<div align="center">
 
-| Metric | Score |
-|---------|------|
-| Test Accuracy | **100%** |
-| ROC-AUC | **1.0000** |
-| Cross Validation Accuracy | **96.67%** |
+## 🥇 Logistic Regression
 
-### Hyperparameter Tuning
+### 🎯 Test Accuracy
 
-```
-GridSearchCV (5-Fold Cross Validation)
+# 💯 100%
 
-Best Parameters:
-C = 1
-solver = lbfgs
-```
+### 📈 ROC-AUC
+
+# ⭐ 1.0000
+
+</div>
 
 ---
 
-# 📈 Visualizations
+# 📊 Generated Visualizations
 
-The project automatically generates the following visualizations.
+✅ Pair Plot
 
-| Visualization | Description |
-|--------------|-------------|
-| 📊 Pair Plot | Feature relationships |
-| 📦 Box Plots | Distribution of features |
-| 🔥 Correlation Heatmap | Feature correlation |
-| 📉 Model Comparison | Accuracy & ROC comparison |
-| 🎯 Confusion Matrix | Best model predictions |
-| 🌿 Feature Importance | Random Forest importance |
-| ✨ Decision Boundary | SVM visualization |
-| 📈 Learning Curve | Model performance over training |
+✅ Box Plot
+
+✅ Correlation Heatmap
+
+✅ Model Comparison
+
+✅ Confusion Matrix
+
+✅ Feature Importance
+
+✅ Decision Boundary
+
+✅ Learning Curve
 
 ---
 
 # 🚀 Installation
 
-Clone the repository
-
 ```bash
-git clone https://github.com/your-username/IrisClassification.git
-```
+git clone https://github.com/yourusername/IrisClassification.git
 
-Move into the project directory
-
-```bash
 cd IrisClassification
-```
 
-Install dependencies
-
-```bash
 pip install -r requirements.txt
-```
 
-Run the project
-
-```bash
 python src/iris_classification.py
 ```
 
 ---
 
-# 📊 Results
+# 📈 Workflow
 
-✅ Compared **8 Machine Learning Algorithms**
-
-✅ Performed **Feature Engineering**
-
-✅ Applied **GridSearchCV Hyperparameter Tuning**
-
-✅ Generated **8 Visualizations**
-
-✅ Achieved **100% Test Accuracy**
-
-✅ ROC-AUC Score **1.0000**
+```text
+Dataset
+   │
+   ▼
+Data Cleaning
+   │
+   ▼
+Feature Engineering
+   │
+   ▼
+Train/Test Split
+   │
+   ▼
+Model Training
+   │
+   ▼
+GridSearchCV
+   │
+   ▼
+Evaluation
+   │
+   ▼
+Visualizations
+   │
+   ▼
+Best Model
+```
 
 ---
 
-# 💡 Key Findings
+# 💡 Key Insights
 
-- 🌸 Petal features are the strongest predictors of Iris species.
-- 🌿 Setosa is perfectly separable from the other classes.
-- 📊 Engineered features improved the performance of linear models.
-- 🤖 Logistic Regression and SVM achieved perfect classification on the test set.
-- 📈 Petal Length and Petal Width contributed the most to prediction accuracy.
+🌸 Petal Length is the strongest predictor.
+
+🌸 Petal Width is highly informative.
+
+🌸 Setosa is perfectly separable.
+
+🌸 Feature Engineering improved performance.
+
+🌸 Logistic Regression achieved perfect accuracy.
 
 ---
 
 # 🛠️ Tech Stack
 
-- Python
-- Pandas
-- NumPy
-- Scikit-Learn
-- Matplotlib
-- Seaborn
+🐍 Python
+
+📊 Pandas
+
+🔢 NumPy
+
+🤖 Scikit-Learn
+
+📉 Matplotlib
+
+🎨 Seaborn
 
 ---
 
-# 📌 Future Improvements
+# 🌟 Future Improvements
 
-- Deploy with Streamlit
-- Add a web interface for predictions
-- Experiment with Deep Learning
-- Implement automated feature selection
-- Build an interactive dashboard
-
----
-
-## ⭐ If you found this project helpful, consider giving it a Star on GitHub!
+- 🌐 Streamlit Web App
+- 📱 Interactive Dashboard
+- 🤖 Deep Learning Model
+- ☁️ Cloud Deployment
+- 🧠 AutoML Integration
 
 ---
+
+<div align="center">
+
+## ⭐ Star this Repository if you found it useful!
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00C896,100:4facfe&height=120&section=footer"/>
+
+</div>

@@ -67,7 +67,6 @@ g.fig.savefig(os.path.join(PLOTS_DIR, '01_pairplot.png'), dpi=120, bbox_inches='
 plt.close()
 print("  ✔ 01_pairplot.png")
 
-# 2b. Boxplots per feature
 print("[EDA] Generating feature boxplots …")
 fig, axes = plt.subplots(2, 2, figsize=(12, 8))
 fig.suptitle('Feature Distributions by Species', fontsize=14, fontweight='bold')
@@ -87,7 +86,6 @@ plt.savefig(os.path.join(PLOTS_DIR, '02_boxplots.png'), dpi=120, bbox_inches='ti
 plt.close()
 print("  ✔ 02_boxplots.png")
 
-# 2c. Correlation heatmap
 print("[EDA] Generating correlation heatmap …")
 fig, ax = plt.subplots(figsize=(7, 5))
 corr = df[FEATURES].corr()
@@ -101,10 +99,6 @@ plt.tight_layout()
 plt.savefig(os.path.join(PLOTS_DIR, '03_correlation.png'), dpi=120, bbox_inches='tight')
 plt.close()
 print("  ✔ 03_correlation.png")
-
-# ──────────────────────────────────────────────
-# 3. Feature Engineering
-# ──────────────────────────────────────────────
 print("\n[Feature Engineering]")
 
 def engineer_features(frame):
@@ -122,7 +116,6 @@ def engineer_features(frame):
     f['len_diff']       = sl - pl
     f['wid_diff']       = sw - pw
 
-    # Interaction
     f['petal_sepal_area_ratio'] = f['petal_area'] / (f['sepal_area'] + 1e-6)
 
     return f
@@ -134,9 +127,9 @@ print(f"  Features after engineering: {len(ENG_FEATURES)}")
 print(f"  New features: petal_ratio, sepal_ratio, petal_area, sepal_area,")
 print(f"                len_diff, wid_diff, petal_sepal_area_ratio")
 
-# ──────────────────────────────────────────────
-# 4. Train / Test Split
-# ──────────────────────────────────────────────
+
+# Train / Test Split
+
 X = df_eng[ENG_FEATURES].values
 y = df_eng['species'].values
 
@@ -145,9 +138,8 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 print(f"\n  Train: {X_train.shape[0]} | Test: {X_test.shape[0]}")
 
-# ──────────────────────────────────────────────
+
 # 5. Model Training & Evaluation
-# ──────────────────────────────────────────────
 print("\n[Model Training — 8 algorithms]")
 
 models = {
@@ -186,14 +178,12 @@ for name, model in models.items():
     print(f"  {name:<26} CV={cv_scores.mean():.4f}±{cv_scores.std():.4f}  "
           f"Test Acc={acc:.4f}  ROC-AUC={roc_auc:.4f}")
 
-# Best model
 best_name = max(results, key=lambda n: results[n]['roc_auc'])
 best = results[best_name]
 print(f"\n★ Best Model: {best_name}  (ROC-AUC={best['roc_auc']:.4f})")
 
-# ──────────────────────────────────────────────
+
 # 6. Hyperparameter Tuning (Best Model)
-# ──────────────────────────────────────────────
 print(f"\n[Hyperparameter Tuning — {best_name}]")
 
 param_grids = {
@@ -238,12 +228,10 @@ if best_name in param_grids:
 else:
     print(f"  No grid defined for {best_name}; using default fit.")
 
-# ──────────────────────────────────────────────
+
 # 7. Visualisations — Results
-# ──────────────────────────────────────────────
 print("\n[Plots — Results]")
 
-# 7a. Model comparison
 print("[Plot] Model comparison …")
 fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 fig.suptitle('Model Comparison', fontsize=14, fontweight='bold')
@@ -280,7 +268,7 @@ plt.savefig(os.path.join(PLOTS_DIR, '04_model_comparison.png'), dpi=120, bbox_in
 plt.close()
 print("  ✔ 04_model_comparison.png")
 
-# 7b. Confusion matrix (best model)
+
 print("[Plot] Confusion matrix …")
 cm = confusion_matrix(y_test, tuned_y_pred)
 fig, ax = plt.subplots(figsize=(7, 5))
@@ -296,7 +284,6 @@ plt.savefig(os.path.join(PLOTS_DIR, '05_confusion_matrix.png'), dpi=120, bbox_in
 plt.close()
 print("  ✔ 05_confusion_matrix.png")
 
-# 7c. Feature importance (Random Forest always trained)
 print("[Plot] Feature importance …")
 rf = results['Random Forest']['model']
 importances = rf.feature_importances_
@@ -319,10 +306,8 @@ plt.tight_layout()
 plt.savefig(os.path.join(PLOTS_DIR, '06_feature_importance.png'), dpi=120, bbox_inches='tight')
 plt.close()
 print("  ✔ 06_feature_importance.png")
-
-# 7d. Decision boundary (petal length vs petal width — most discriminative)
 print("[Plot] Decision boundary (2D) …")
-feat_idx = [2, 3]   # petal length, petal width
+feat_idx = [2, 3]                                              # petal length, petal width
 feat_names_2d = [FEATURES[i].replace(' (cm)', '') for i in feat_idx]
 
 X2 = df_eng[FEATURES].values[:, feat_idx]
@@ -354,7 +339,7 @@ plt.savefig(os.path.join(PLOTS_DIR, '07_decision_boundary.png'), dpi=120, bbox_i
 plt.close()
 print("  ✔ 07_decision_boundary.png")
 
-# 7e. Learning curve (best model)
+
 print("[Plot] Learning curve …")
 from sklearn.model_selection import learning_curve
 

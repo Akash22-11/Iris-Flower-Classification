@@ -70,6 +70,7 @@ g.fig.savefig(os.path.join(PLOTS_DIR, '01_pairplot.png'), dpi=120, bbox_inches='
 plt.close()
 print("  ✔ 01_pairplot.png")
 
+
 print("[EDA] Generating feature boxplots …")
 fig, axes = plt.subplots(2, 2, figsize=(12, 8))
 fig.suptitle('Feature Distributions by Species', fontsize=14, fontweight='bold')

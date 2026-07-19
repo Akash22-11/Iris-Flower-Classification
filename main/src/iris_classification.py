@@ -18,8 +18,6 @@ from sklearn.metrics import (
     accuracy_score, classification_report, confusion_matrix, roc_auc_score
 )
 
-
-
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC

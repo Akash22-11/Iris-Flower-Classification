@@ -135,7 +135,6 @@ print(f"                len_diff, wid_diff, petal_sepal_area_ratio")
 
 
 # Train / Test Split
-
 X = df_eng[ENG_FEATURES].values
 y = df_eng['species'].values
 
@@ -143,6 +142,7 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42, stratify=y
 )
 print(f"\n  Train: {X_train.shape[0]} | Test: {X_test.shape[0]}")
+
 
 
 # Model Training & Evaluation

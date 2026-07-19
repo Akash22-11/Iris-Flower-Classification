@@ -48,6 +48,7 @@ df = pd.DataFrame(iris.data, columns=iris.feature_names)
 df['species'] = iris.target
 df['species_name'] = df['species'].map({
     0: 'Iris-setosa', 1: 'Iris-versicolor', 2: 'Iris-virginica'
+
 })
 
 
